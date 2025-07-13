@@ -1,0 +1,9 @@
+streamlit
+nltk
+spacy==3.7.2
+pdfminer.six
+streamlit-tags
+pymysql
+Pillow
+plotly
+yt-dlp
