@@ -1,6 +1,7 @@
 streamlit
 nltk
 spacy==3.7.2
+thinc==8.1.12
 pdfminer.six
 streamlit-tags
 pymysql
