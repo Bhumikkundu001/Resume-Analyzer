@@ -8,3 +8,4 @@ pymysql
 Pillow
 plotly
 yt-dlp
+numpy<1.25
