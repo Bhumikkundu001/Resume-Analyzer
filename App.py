@@ -7,7 +7,6 @@ import spacy
 import pandas as pd
 import base64, random
 import time, datetime
-from pyresparser import ResumeParser
 from pdfminer.layout import LAParams, LTTextBox
 from pdfminer.pdfpage import PDFPage
 from pdfminer.pdfinterp import PDFResourceManager
@@ -22,7 +21,10 @@ from yt_dlp import YoutubeDL
 import plotly.express as px
 import os  # <-- Add this import
 import re
+from pdfminer.high_level import extract_text
 
+nltk.download('punkt')
+nltk.download('stopwords')
 
 def fetch_yt_video(link):
     try:
@@ -108,31 +110,42 @@ st.set_page_config(
 )
 
 
-def extract_resume_data(path):
-    resume_text = pdf_reader(path)
-    
-    # Extract email
-    email = re.search(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", resume_text)
-    email = email.group(0) if email else "Not found"
+def extract_name(text):
+    lines = text.split("\n")
+    return lines[0].strip() if lines else ""
 
-    # Extract phone number (simple pattern)
-    phone = re.search(r"\b\d{10}\b", resume_text)
-    phone = phone.group(0) if phone else "Not found"
 
-    # Extract name (basic logic: first line not containing keywords)
-    lines = resume_text.strip().split('\n')
-    name = next((line.strip() for line in lines if line and not any(k in line.lower() for k in ['email', 'phone', '@'])), 'Unknown')
+def extract_email(text):
+    match = re.search(r'[\w\.-]+@[\w\.-]+', text)
+    return match.group(0) if match else ""
 
-    # Dummy skill detection
-    skill_keywords = ['python', 'java', 'c++', 'sql', 'html', 'css', 'javascript', 'react', 'flask', 'django']
-    skills_found = [skill for skill in skill_keywords if skill in resume_text.lower()]
+
+def extract_phone(text):
+    match = re.search(r'\b\d{10}\b', text)
+    return match.group(0) if match else ""
+
+
+def extract_skills(text):
+    skill_keywords = ['python', 'java', 'sql', 'html', 'css', 'javascript', 'c++', 'machine learning', 'data analysis']
+    text = text.lower()
+    found = [skill for skill in skill_keywords if skill in text]
+    return list(set(found))
+
+
+def extract_resume_data(file_path):
+    text = extract_text(file_path)
+
+    name = extract_name(text)
+    email = extract_email(text)
+    phone = extract_phone(text)
+    skills = extract_skills(text)
 
     return {
         'name': name,
         'email': email,
         'mobile_number': phone,
-        'skills': skills_found,
-        'no_of_pages': resume_text.count('\f') + 1
+        'skills': skills,
+        'no_of_pages': text.count('\f') + 1
     }
 
 def run():
