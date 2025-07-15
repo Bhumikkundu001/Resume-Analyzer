@@ -14,13 +14,14 @@ from pdfminer.converter import TextConverter
 import io, random
 from streamlit_tags import st_tags
 from PIL import Image
-import pymysql
+import psycopg2
 from Courses import ds_course, web_course, android_course, ios_course, uiux_course, resume_videos, interview_videos
 from yt_dlp import YoutubeDL
 import plotly.express as px
 import os  # <-- Add this import
 import re
 from pdfminer.high_level import extract_text
+import pymysql
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -87,7 +88,17 @@ def course_recommender(course_list):
     return rec_course
 
 
-connection = pymysql.connect(host='localhost', user='root', password='198200')
+def get_connection():
+    return psycopg2.connect(
+        host="db.ayionqngtoumadvxkugs.supabase.co",
+        database="postgres",
+        user="postgres",
+        password="198200",
+        port=5432
+    )
+
+
+connection = get_connection()
 cursor = connection.cursor()
 
 
