@@ -2,7 +2,7 @@ streamlit
 nltk
 pdfminer.six
 streamlit-tags
-pymysql
 Pillow
 plotly
 yt-dlp
+psycopg2-binary
