@@ -1,8 +1,5 @@
 import streamlit as st
 import nltk
-#nltk.download('stopwords')
-#spacy.load('en_core_web_sm')
-
 import pandas as pd
 import base64, random
 import time, datetime
@@ -429,6 +426,9 @@ def run():
         if st.button('Login'):
             if ad_user == 'admin_bhumik' and ad_password == '198200':
                 st.success("Welcome Bhumik")
+
+                connection = get_connection()
+                cursor = connection.cursor()
                 # Display Data
                 cursor.execute('''SELECT*FROM user_data''')
                 data = cursor.fetchall()
