@@ -21,7 +21,6 @@ import plotly.express as px
 import os  # <-- Add this import
 import re
 from pdfminer.high_level import extract_text
-import pymysql
 
 nltk.download('punkt')
 nltk.download('stopwords')
@@ -90,16 +89,16 @@ def course_recommender(course_list):
 
 def get_connection():
     return psycopg2.connect(
-        host="db.ayionqngtoumadvxkugs.supabase.co",
-        database="postgres",
-        user="postgres",
-        password="198200",
-        port=5432
+        host=st.secrets["db"]["host"],
+        port=st.secrets["db"]["port"],
+        database=st.secrets["db"]["database"],
+        user=st.secrets["db"]["user"],
+        password=st.secrets["db"]["password"]
     )
 
 
-connection = get_connection()
-cursor = connection.cursor()
+conn = get_connection()
+cursor = conn.cursor()
 
 
 def insert_data(name, email, res_score, timestamp, no_of_pages, reco_field, cand_level, skills, recommended_skills,
@@ -163,27 +162,23 @@ def run():
     st.sidebar.markdown("# Choose User")
     activities = ["Normal User", "Admin"]
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
-    # Create the DB
-    db_sql = """CREATE DATABASE IF NOT EXISTS SRA;"""
-    cursor.execute(db_sql)
-    connection.select_db("sra")
-
     # Create table
     DB_table_name = 'user_data'
-    table_sql = "CREATE TABLE IF NOT EXISTS " + DB_table_name + """
-                    (ID INT NOT NULL AUTO_INCREMENT,
-                     Name varchar(100) NOT NULL,
-                     Email_ID VARCHAR(50) NOT NULL,
-                     resume_score VARCHAR(8) NOT NULL,
-                     Timestamp VARCHAR(50) NOT NULL,
-                     Page_no VARCHAR(5) NOT NULL,
-                     Predicted_Field VARCHAR(25) NOT NULL,
-                     User_level VARCHAR(30) NOT NULL,
-                     Actual_skills VARCHAR(300) NOT NULL,
-                     Recommended_skills VARCHAR(300) NOT NULL,
-                     Recommended_courses VARCHAR(600) NOT NULL,
-                     PRIMARY KEY (ID));
-                    """
+    table_sql = """
+    CREATE TABLE IF NOT EXISTS user_data (
+        ID SERIAL PRIMARY KEY,
+        Name VARCHAR(100),
+        Email_ID VARCHAR(50),
+        Resume_score VARCHAR(8),
+        Timestamp VARCHAR(50),
+        Page_no VARCHAR(5),
+        Predicted_Field VARCHAR(25),
+        User_level VARCHAR(30),
+        Actual_skills VARCHAR(300),
+        Recommended_skills VARCHAR(300),
+        Recommended_courses VARCHAR(600)
+    );
+    """
     cursor.execute(table_sql)
     if choice == 'Normal User':
         # st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Upload your resume, and get smart recommendation based on it."</h4>''',
