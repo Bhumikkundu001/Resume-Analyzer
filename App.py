@@ -164,22 +164,6 @@ def run():
     choice = st.sidebar.selectbox("Choose among the given options:", activities)
     # Create table
     DB_table_name = 'user_data'
-    table_sql = """
-    CREATE TABLE IF NOT EXISTS user_data (
-        ID SERIAL PRIMARY KEY,
-        Name VARCHAR(100),
-        Email_ID VARCHAR(50),
-        Resume_score VARCHAR(8),
-        Timestamp VARCHAR(50),
-        Page_no VARCHAR(5),
-        Predicted_Field VARCHAR(25),
-        User_level VARCHAR(30),
-        Actual_skills VARCHAR(300),
-        Recommended_skills VARCHAR(300),
-        Recommended_courses VARCHAR(600)
-    );
-    """
-    cursor.execute(table_sql)
     if choice == 'Normal User':
         # st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Upload your resume, and get smart recommendation based on it."</h4>''',
         #             unsafe_allow_html=True)
