@@ -105,14 +105,6 @@ Manual resume screening is time-consuming and subjective. This tool uses automat
 
 ---
 
-### ✅ Hackathon Alignment
-
-* ✔️ Matches initial PPT proposal
-* ✔️ NLP-driven resume analyzer with skill recommendations
-* ✔️ Enhancements: Admin dashboard, YouTube integration
-
----
-
 ### 👨‍💻 Developer
 
 | Name         | Role                      |
