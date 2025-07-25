@@ -452,8 +452,8 @@ def run():
                 st.plotly_chart(fig)    
 
                 ### Pie chart for User's👨‍💻 Experienced Level
-                labels = plot_data["User_level"].unique()
-                values = plot_data["User_level"].value_counts()
+                labels = plot_data["user_level"].unique()
+                values = plot_data["user_level"].value_counts()
                 st.subheader("📈 ** Pie-Chart for User's👨‍💻 Experienced Level**")
                 fig = px.pie(plot_data, values=values, names=labels, title="Pie-Chart📈 for User's👨‍💻 Experienced Level")
                 st.plotly_chart(fig)
