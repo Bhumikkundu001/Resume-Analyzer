@@ -414,7 +414,7 @@ def run():
                 st.subheader("✅ **" + int_vid_title + "**")
                 st.video(interview_vid)
 
-                connection.commit()
+                conn.commit()
             else:
                 st.error('Something went wrong..')
     else:
