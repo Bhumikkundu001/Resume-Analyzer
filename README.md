@@ -1,69 +1,128 @@
-🧠 Smart Resume Analyzer
+---
+
+## 🧠 Smart Resume Analyzer
+
 A Streamlit-powered AI Resume Analyzer that reads resumes (PDF), extracts key details, identifies skill gaps, and recommends personalized learning resources — all in seconds. Built for students, job seekers, and recruiters.
 
-📌 Features
-📄 PDF Resume Upload & Parsing
+---
 
-🧠 NLP-based Skill Extraction
+### 📌 Features
 
-🎯 Job Field & Candidate Level Prediction
+* 📄 Upload and analyze PDF resumes instantly
+* 🧠 NLP-based skill extraction using `nltk` & `pdfminer`
+* 🎯 Candidate level prediction (Fresher, Intermediate, Experienced)
+* 💡 Personalized skill + course recommendations
+* 📊 Admin dashboard with live data insights (Pie charts using Plotly)
+* 🎥 Bonus: Resume & Interview Tips via YouTube
 
-💡 Recommended Skills & Online Courses
+---
 
-📊 Admin Dashboard with Visual Analytics
+### 🚀 Tech Stack
 
-📽️ Bonus: Resume & Interview Tips (YouTube)
+| Layer          | Technology Used                         |
+| -------------- | --------------------------------------- |
+| 🧠 NLP/Parsing | `pdfminer`, `nltk`, `re`, `spaCy`       |
+| 💻 Frontend    | `Streamlit`, `streamlit-tags`, `plotly` |
+| 🛢️ Database   | `Supabase (PostgreSQL)`                 |
+| 🔗 Extras      | `yt-dlp` for YouTube scraping           |
 
-🚀 Tech Stack
-Layer	              Technology Used
-🧠 NLP/Parsing	    pdfminer, nltk, re, spaCy
-💻 Frontend	        Streamlit, streamlit-tags, plotly
-🛢️ Database	        Supabase (PostgreSQL)
-🔗 Extras	          yt-dlp for YouTube video scraping
+---
 
-🌐 Live Demo
-🟢 https://resume-analyzer001.streamlit.app
-Public deployment available for testing.
+### 🔗 Live App
 
-📁 Setup Instructions
-1.Clone the repository
+▶️ **Try it now** → [https://resume-analyzer001.streamlit.app/](https://resume-analyzer001.streamlit.app/)
+
+---
+
+### 🧪 How to Run Locally
+
+1. **Clone this repository**
+
+```bash
 git clone https://github.com/your-username/resume-analyzer.git
 cd resume-analyzer
-2.Install dependencies
+```
+
+2. **Install dependencies**
+
+```bash
 pip install -r requirements.txt
-3.Add your Supabase credentials
-Create a .streamlit/secrets.toml file:
+```
+
+3. **Add your Supabase credentials**
+
+Create a file at `.streamlit/secrets.toml`:
+
+```toml
 [db]
 host = "your-db-host"
 port = "5432"
 database = "your-database-name"
 user = "your-username"
 password = "your-password"
-4.Run the app
+```
+
+4. **Run the app**
+
+```bash
 streamlit run App.py
-👤 Admin Login
-Use this to access the dashboard:
+```
+
+---
+
+### 👨‍💼 Admin Dashboard Access
+
+Use the following login:
+
+```
 Username: admin_bhumik
 Password: 198200
-📊 Sample Screenshots
+```
 
+---
 
+### 📸 Sample Screenshots
 
-🎯 Problem Statement
-Job seekers often lack clarity on skill gaps and relevant courses, while recruiters waste time manually reviewing resumes.
-This tool automates resume analysis and recommends improvements using NLP and ML.
+> Add screenshots in the `/screenshots` folder and link them below.
 
-📌 Alignment with Hackathon Proposal
-✅ Core idea: Resume parsing + skill recommendations
+#### Resume Upload & Analysis
 
-✅ Enhancement: Admin analytics dashboard
+![Resume Upload](screenshots/resume_analysis.png)
 
-✅ Innovation: Bonus YouTube tips and course links
+#### Admin Dashboard Pie Charts
 
-👥 Team
-Name	        Role
-Bhumik Kundu	Full-stack Developer & ML Engineer
+![Admin Dashboard](screenshots/admin_dashboard.png)
 
-📜 License
-MIT License (or any license you prefer)
+---
 
+### 🎯 Problem Solved
+
+Manual resume screening is time-consuming and subjective. This tool uses automation to:
+
+* Extract resume data
+* Recommend skills and courses
+* Provide admin insights for better decision-making
+
+---
+
+### ✅ Hackathon Alignment
+
+* ✔️ Matches initial PPT proposal
+* ✔️ NLP-driven resume analyzer with skill recommendations
+* ✔️ Enhancements: Admin dashboard, YouTube integration
+
+---
+
+### 👨‍💻 Developer
+
+| Name         | Role                      |
+| ------------ | ------------------------- |
+| Bhumik Kundu | Full-stack & ML Developer |
+
+---
+
+### 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
