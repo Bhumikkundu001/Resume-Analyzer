@@ -444,9 +444,9 @@ def run():
                 plot_data = pd.read_sql(query, connection)
 
                 ## Pie chart for predicted field recommendations
-                labels = plot_data.predicted_Field.unique()
+                labels = plot_data.predicted_field.unique()
                 print(labels)
-                values = plot_data.predicted_Field.value_counts()
+                values = plot_data.predicted_field.value_counts()
                 st.subheader("📈 **Pie-Chart for Predicted Field Recommendations**")
                 fig = px.pie(df, values=values, names=labels, title='Predicted Field according to the Skills')
                 st.plotly_chart(fig)    
