@@ -86,10 +86,13 @@ Password: 198200
 #### Resume Upload & Analysis
 
 ![Resume Upload](resume_analysis.png)
+![Resume Upload](resume_analysis1.png)
 
 #### Admin Dashboard Pie Charts
 
-![Admin Dashboard](screenshots/admin_dashboard.png)
+![Admin Dashboard](admin_dashboard.png)
+![Admin Dashboard](admin_dashboard1.png)
+![Admin Dashboard](admin_dashboard2.png)
 
 ---
 
