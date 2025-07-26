@@ -60,9 +60,10 @@ def pdf_reader(file):
 def show_pdf(file_path):
     with open(file_path, "rb") as f:
         base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-    # pdf_display = f'<embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">'
-    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-    st.markdown(pdf_display, unsafe_allow_html=True)
+        pdf_display = f"""
+            <embed src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf">
+        """
+        st.markdown(pdf_display, unsafe_allow_html=True)
 
 
 def course_recommender(course_list):
@@ -457,7 +458,6 @@ def run():
                 st.subheader("📈 ** Pie-Chart for User's👨‍💻 Experienced Level**")
                 fig = px.pie(plot_data, values=values, names=labels, title="Pie-Chart📈 for User's👨‍💻 Experienced Level")
                 st.plotly_chart(fig)
-
     
             else:
                 st.error("Wrong ID & Password Provided")
