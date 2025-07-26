@@ -57,20 +57,22 @@ def pdf_reader(file):
     return text
 
 
+# PDF rendering function — Safe for all browsers
 def show_pdf(file_path):
     try:
         with open(file_path, "rb") as f:
-            base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-        pdf_display = f'''
-            <iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>
-        '''
-        st.markdown(pdf_display, unsafe_allow_html=True)
-    except Exception:
-        st.warning("⚠️ Preview not supported in your browser. Please download the resume below.")
-        with open(file_path, "rb") as f:
-            st.download_button("📄 Download Resume",
-                               f,
-                               file_name="resume.pdf")
+            file_bytes = f.read()
+
+        st.download_button(
+            label="📄 Download Resume",
+            data=file_bytes,
+            file_name="resume.pdf",
+            mime="application/pdf"
+        )
+
+        st.info("⚠️ PDF preview is blocked in some browsers (like Chrome). Use the button above to download and view the resume.")
+    except Exception as e:
+        st.error(f"Something went wrong while trying to show the PDF: {e}")
 
 
 def course_recommender(course_list):
