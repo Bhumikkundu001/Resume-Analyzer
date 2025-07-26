@@ -83,11 +83,9 @@ Password: 198200
 
 ### 📸 Sample Screenshots
 
-> Add screenshots in the `/screenshots` folder and link them below.
-
 #### Resume Upload & Analysis
 
-![Resume Upload](screenshots/resume_analysis.png)
+![Resume Upload](resume_analysis.png)
 
 #### Admin Dashboard Pie Charts
 
