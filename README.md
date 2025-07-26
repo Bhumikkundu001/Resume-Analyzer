@@ -1,49 +1,121 @@
+---
 
-# 🧠 Smart Resume Analyzer
+## 🧠 Smart Resume Analyzer
 
-A Streamlit-based web app that analyzes resumes to extract key information and recommend personalized skills and courses — powered by NLP and PDF processing.
+A Streamlit-powered AI Resume Analyzer that reads resumes (PDF), extracts key details, identifies skill gaps, and recommends personalized learning resources — all in seconds. Built for students, job seekers, and recruiters.
 
 ---
 
-## 🚀 Features
+### 📌 Features
 
-- 📄 Upload PDF resumes and extract:
-  - Name
-  - Email
-  - Phone number
-  - Skills
-  - Resume page count
-- 🔍 Automatic skill detection using keyword scanning
-- 🎯 Predicts candidate’s likely job domain (Data Science, Web Dev, Android, etc.)
-- 🎓 Recommends courses & certificates based on skills
-- 🧠 Suggests interview prep videos and resume building tips
-- 🔐 Admin panel to view all uploaded resumes with insights
-- 💾 Stores data in MySQL for future analysis
+* 📄 Upload and analyze PDF resumes instantly
+* 🧠 NLP-based skill extraction using `nltk` & `pdfminer`
+* 🎯 Candidate level prediction (Fresher, Intermediate, Experienced)
+* 💡 Personalized skill + course recommendations
+* 📊 Admin dashboard with live data insights (Pie charts using Plotly)
+* 🎥 Bonus: Resume & Interview Tips via YouTube
 
 ---
 
-## 🛠️ Tech Stack
+### 🚀 Tech Stack
 
-- **Frontend/UI**: Streamlit
-- **Backend/NLP**: Python, spaCy, nltk, pdfminer.six
-- **Database**: MySQL
-- **Extras**: yt-dlp for YouTube integration, streamlit-tags for skill UI
-
----
-
-## 📸 Screenshots
-
-| Resume Upload | Admin Panel |
-|---------------|-------------|
-| ![Upload](https://your-upload-screenshot.png) | ![Admin](https://your-admin-screenshot.png) |
-
-> Replace these with your actual screenshots or use placeholders.
+| Layer          | Technology Used                         |
+| -------------- | --------------------------------------- |
+| 🧠 NLP/Parsing | `pdfminer`, `nltk`, `re`, `spaCy`       |
+| 💻 Frontend    | `Streamlit`, `streamlit-tags`, `plotly` |
+| 🛢️ Database   | `Supabase (PostgreSQL)`                 |
+| 🔗 Extras      | `yt-dlp` for YouTube scraping           |
 
 ---
 
-## 📦 Installation
+### 🔗 Live App
+
+▶️ **Try it now** → [https://resume-analyzer001.streamlit.app/](https://resume-analyzer001.streamlit.app/)
+
+---
+
+### 🧪 How to Run Locally
+
+1. **Clone this repository**
 
 ```bash
 git clone https://github.com/your-username/resume-analyzer.git
 cd resume-analyzer
+```
+
+2. **Install dependencies**
+
+```bash
 pip install -r requirements.txt
+```
+
+3. **Add your Supabase credentials**
+
+Create a file at `.streamlit/secrets.toml`:
+
+```toml
+[db]
+host = "your-db-host"
+port = "5432"
+database = "your-database-name"
+user = "your-username"
+password = "your-password"
+```
+
+4. **Run the app**
+
+```bash
+streamlit run App.py
+```
+
+---
+
+### 👨‍💼 Admin Dashboard Access
+
+Use the following login:
+
+```
+Username: admin_bhumik
+Password: 198200
+```
+
+---
+
+### 📸 Sample Screenshots
+
+#### Resume Upload & Analysis
+
+![Resume Upload](resume_analysis.png)
+![Resume Upload](resume_analysis1.png)
+
+#### Admin Dashboard Pie Charts
+
+![Admin Dashboard](admin_dashboard.png)
+![Admin Dashboard](admin_dashboard1.png)
+![Admin Dashboard](admin_dashboard2.png)
+
+---
+
+### 🎯 Problem Solved
+
+Manual resume screening is time-consuming and subjective. This tool uses automation to:
+
+* Extract resume data
+* Recommend skills and courses
+* Provide admin insights for better decision-making
+
+---
+
+### 👨‍💻 Developer
+
+| Name         | Role                      |
+| ------------ | ------------------------- |
+| Bhumik Kundu | Full-stack & ML Developer |
+
+---
+
+### 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
